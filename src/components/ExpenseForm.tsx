@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { usePerson } from "./PersonContext";
+import { SubmitButton } from "./SubmitButton";
 import { logExpense } from "@/lib/actions";
 import { envelopeStatus, formatCurrency } from "@/lib/calc";
 import { CategoryWithPlan } from "@/lib/types";
@@ -104,12 +105,12 @@ export function ExpenseForm({
         </p>
       )}
 
-      <button
-        type="submit"
+      <SubmitButton
+        pendingLabel="Logging…"
         className="rounded-md bg-amber-600 px-4 py-2 text-sm font-medium text-white hover:bg-amber-700"
       >
         Log expense
-      </button>
+      </SubmitButton>
     </form>
   );
 }

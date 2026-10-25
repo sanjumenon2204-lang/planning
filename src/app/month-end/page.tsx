@@ -18,6 +18,7 @@ import {
 } from "@/lib/calc";
 import { SetupNotice } from "@/components/SetupNotice";
 import { EnvelopeBar } from "@/components/EnvelopeBar";
+import { SubmitButton } from "@/components/SubmitButton";
 import { closeMonth } from "@/lib/actions";
 
 export default async function MonthEndPage() {
@@ -114,12 +115,12 @@ export default async function MonthEndPage() {
           </div>
         ) : (
           <form action={closeMonth.bind(null, month.id, Number(month.salary), spent)}>
-            <button
-              type="submit"
+            <SubmitButton
+              pendingLabel="Closing…"
               className="w-full rounded-md bg-amber-600 px-4 py-3 text-sm font-medium text-white hover:bg-amber-700"
             >
               Close this month &amp; move {formatCurrency(balance)} to Savings Pot
-            </button>
+            </SubmitButton>
           </form>
         )}
       </div>

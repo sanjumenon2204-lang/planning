@@ -5,6 +5,7 @@ import { buildCategoriesWithPlan, formatPeriodLabel, totalPlanned } from "@/lib/
 import { SetupNotice } from "@/components/SetupNotice";
 import { saveBudget, addCategory } from "@/lib/actions";
 import { CategoryTagToggle } from "@/components/CategoryTagToggle";
+import { SubmitButton } from "@/components/SubmitButton";
 import { CategoryWithPlan } from "@/lib/types";
 
 function CategoryRow({ category }: { category: CategoryWithPlan }) {
@@ -89,12 +90,12 @@ export default async function BudgetPage() {
               ? `${leftToPlan.toFixed(0)} AED left to plan`
               : `${Math.abs(leftToPlan).toFixed(0)} AED over your salary — worth a look`}
           </span>
-          <button
-            type="submit"
+          <SubmitButton
+            pendingLabel="Saving…"
             className="rounded-md bg-amber-600 px-4 py-2 text-sm font-medium text-white hover:bg-amber-700"
           >
             Save plan
-          </button>
+          </SubmitButton>
         </div>
       </form>
 
@@ -128,12 +129,12 @@ export default async function BudgetPage() {
               placeholder="0"
             />
           </div>
-          <button
-            type="submit"
+          <SubmitButton
+            pendingLabel="Adding…"
             className="rounded-md border border-amber-300 bg-amber-50 px-3 py-1.5 text-sm font-medium text-amber-800 hover:bg-amber-100"
           >
             Add category
-          </button>
+          </SubmitButton>
         </form>
       </section>
     </div>
