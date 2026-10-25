@@ -11,6 +11,7 @@ const links = [
   { href: "/month-end", label: "Month-End" },
   { href: "/goals", label: "Goals" },
   { href: "/savings", label: "Savings" },
+  { href: "/history", label: "History" },
 ];
 
 export function NavBar() {
@@ -28,19 +29,20 @@ export function NavBar() {
           </div>
         </div>
         <nav className="flex flex-wrap gap-1 text-sm">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className={`rounded-md px-3 py-1.5 transition ${
-                pathname === l.href
-                  ? "bg-amber-600 text-white"
-                  : "text-amber-800 hover:bg-amber-100"
-              }`}
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) => {
+            const active = pathname === l.href || (l.href !== "/" && pathname.startsWith(`${l.href}/`));
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`rounded-md px-3 py-1.5 transition ${
+                  active ? "bg-amber-600 text-white" : "text-amber-800 hover:bg-amber-100"
+                }`}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
         </nav>
         <div className="hidden sm:block">
           <PersonSwitcher />

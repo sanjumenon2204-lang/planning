@@ -56,6 +56,13 @@ export async function getMonths(): Promise<Month[]> {
   return data ?? [];
 }
 
+export async function getMonthById(monthId: string): Promise<Month | null> {
+  const db = requireClient();
+  const { data, error } = await db.from("months").select("*").eq("id", monthId).maybeSingle();
+  if (error) throw error;
+  return data;
+}
+
 /** Returns the month row for a period, creating it (with plans copied from the
  * most recent prior month, if any) when it doesn't exist yet. */
 export async function getOrCreateMonth(period: string = currentPeriod()): Promise<Month> {
